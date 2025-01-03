@@ -1,13 +1,7 @@
 provider "azurerm" {
   features {}
 
-  # Set the environment variables for Azure
-  client_id       = var.ARM_CLIENT_ID
-  client_secret   = var.ARM_CLIENT_SECRET
-  tenant_id       = var.ARM_TENANT_ID
-  subscription_id = var.ARM_SUBSCRIPTION_ID
-}
-
+ 
 # Resource Group
 resource "azurerm_resource_group" "rg" {
   name     = var.resource_group_name
