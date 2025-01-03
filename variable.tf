@@ -77,5 +77,25 @@ variable "app_service_name" {
   type    = string
   default = "IDAAccount-AppService"
 }
+variable "ARM_CLIENT_ID" {
+  description = "The client ID of the Azure service principal"
+  type        = string
+}
+
+variable "ARM_CLIENT_SECRET" {
+  description = "The client secret of the Azure service principal"
+  type        = string
+}
+
+variable "ARM_TENANT_ID" {
+  description = "The tenant ID of the Azure subscription"
+  type        = string
+}
+
+variable "ARM_SUBSCRIPTION_ID" {
+  description = "The subscription ID of the Azure subscription"
+  type        = string
+}
+
 
 
