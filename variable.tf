@@ -5,7 +5,7 @@ variable "location" {
 
 variable "resource_group_name" {
   type = string
-  default = "IDA_Indore_RG"
+  default = "IDA_Indore_RG123"
 }
 
 variable "vnet_name" {
