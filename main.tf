@@ -1,14 +1,12 @@
 provider "azurerm" {
-  client_id       = var.ARM_CLIENT_ID
-  client_secret   = var.ARM_CLIENT_SECRET
-  tenant_id       = var.ARM_TENANT_ID
-  subscription_id = var.ARM_SUBSCRIPTION_ID
-
   features {}
+
+  client_id       = var.client_id
+  client_secret   = var.client_secret
+  tenant_id       = var.tenant_id
+  subscription_id = var.subscription_id
 }
 
-
- 
 # Resource Group
 resource "azurerm_resource_group" "rg" {
   name     = var.resource_group_name
@@ -53,8 +51,6 @@ resource "azurerm_network_interface" "nic" {
   }
 }
 
-
-
 # Azure SQL Server
 resource "azurerm_mssql_server" "sql_server" {
   name                         = var.sql_server_name
@@ -77,11 +73,10 @@ resource "azurerm_service_plan" "asp" {
   name                = var.app_service_plan_name
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
-  os_type             = "Linux"  # Required argument for the OS type
-  sku_name            = "F1"     # Define the sku_name directly (F1 for free tier)
+  os_type             = "Linux"
+  sku_name            = "F1"
 }
 
-# App Service
 # App Service
 resource "azurerm_linux_web_app" "app_service" {
   name                = var.app_service_name
@@ -89,9 +84,5 @@ resource "azurerm_linux_web_app" "app_service" {
   resource_group_name = azurerm_resource_group.rg.name
   service_plan_id     = azurerm_service_plan.asp.id
 
-  # Remove the site_config block with linux_fx_version
-  site_config {
-    # linux_fx_version = "DOCKER|mcr.microsoft.com/dotnet/aspnet:6.0"  # Remove this line
-  }
+  site_config {}
 }
-
