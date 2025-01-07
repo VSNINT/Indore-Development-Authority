@@ -86,7 +86,7 @@ variable "app_service_plan_name" {
 # App Service
 variable "app_service_name" {
   type    = string
-  default = "IDAAccount-AppService"
+  default = "IDAAccount-AppService12"
 }
 
 # Azure Authentication Variables
